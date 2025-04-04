@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <modbus/modbus.h>
+#include <modbus.h>
 
 char ip[16];
 int port;
