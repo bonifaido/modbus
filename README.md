@@ -4,8 +4,11 @@ A modbus CLI written in C based on [libmodbus](https://github.com/stephane/libmo
 ## Usage
 
 ```
-modbus [-p=<profile>] [-a=<addr:port>] [-p=<slave_id>] <register>[=<value>]
+modbus [-p=<profile>] [-a=<addr:port>] [-s=<slave_id>] [-t=<u16|u32>] [-w=<hl|lh>] <register>[=<value>]
 ```
+
+- `-t`: register type, `u16` (default) or `u32`
+- `-w`: word order for `u32`, `hl` (default, high word first) or `lh` (low word first)
 
 ## Profiles
 The `modbus` CLI makes it easy to handle multiple modbus devices in your home with the help of profiles. It supports a simple CSV based profile file, located in the user's home directory.
@@ -29,6 +32,15 @@ modbus -a 192.168.1.200:4196 41
 
 # Specify slave id for the above operation
 modbus -a 192.168.1.200:4196 -s 1 41
+
+# Read a uint32 from registers 41 and 42 (high word at 41, low word at 42)
+modbus -a 192.168.1.200:4196 -t u32 41
+
+# Read a uint32 where word order is low word first
+modbus -a 192.168.1.200:4196 -t u32 -w lh 41
+
+# Write uint32 value 123456 to registers 41 and 42
+modbus -a 192.168.1.200:4196 -t u32 41=123456
 ```
 
 In this case you have profile file the usage is just simply:
