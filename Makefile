@@ -6,6 +6,9 @@ modbus: main.c
 clean:
 	rm -f modbus
 
+clean:
+	rm -f modbus
+
 install: modbus
 	sudo install -m 755 modbus /usr/local/bin/modbus
 
