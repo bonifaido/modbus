@@ -6,6 +6,8 @@ modbus: main.c
 clean:
 	rm -f modbus
 
+.PHONY: clean install uninstall
+
 clean:
 	rm -f modbus
 
