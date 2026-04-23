@@ -1,5 +1,10 @@
 modbus: main.c
-	gcc $(shell pkg-config --cflags --libs libmodbus) -o modbus main.c
+	gcc $(shell pkg-config --cflags libmodbus) -o modbus main.c $(shell pkg-config --libs libmodbus)
+
+.PHONY: clean install uninstall
+
+clean:
+	rm -f modbus
 
 .PHONY: clean install uninstall
 
